@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Messaging UI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: rgb(142, 20, 230);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 95%;
+      height: 95vh;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      flex-direction: row;
+    }
+
+    .left-panel {
+      flex: 3;
+      padding: 20px;
+      border-right: 2px solid #ccc;
+      overflow-y: auto;
+    }
+
+    .sort-bar {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .sort-bar input {
+      border: none;
+      border-bottom: 1px solid #000;
+      font-size: 16px;
+      padding: 4px;
+      margin-left: 8px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      position: relative;
+      background-color: #e3f2fd;
+      border-radius: 10px;
+      padding: 15px;
+      height: 100px;
+      cursor: pointer;
+      border: 2px solid rgb(142, 20, 230);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.45s ease-in-out,
+                  background 0.45s ease-in-out,
+                  box-shadow 0.45s ease-in-out,
+                  backdrop-filter 0.45s ease-in-out,
+                  height 0.3s ease;
+    }
+
+    .card:hover {
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px rgba(45, 26, 252, 0.4);
+      transform: scale(1.05);
+    }
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid rgb(142, 20, 230);
+      object-fit: cover;
+    }
+
+    .basic-info {
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .details {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #444;
+      display: none;
+      flex-direction: column;
+    }
+
+    .card:hover .details {
+      display: flex;
+    }
+
+    .message-panel {
+      flex: 1.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #fafafa;
+      border-left: 2px solid #ccc;
+    }
+
+    .message-header {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #999;
+      padding-bottom: 5px;
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      max-height: 500px;
+      padding-right: 5px;
+    }
+
+    .msg {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 10px;
+      word-wrap: break-word;
+    }
+
+    .msg.left {
+      background-color: rgb(142, 20, 230);
+      color: #fff;
+      align-self: flex-start;
+    }
+
+    .msg.right {
+      background-color: rgb(142, 20, 230);
+      color: #fff;
+      align-self: flex-end;
+    }
+
+    .input-box {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .input-box input {
+      flex: 1;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #888;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .left-panel, .message-panel {
+        width: 100%;
+        border: none;
+        height: auto;
+      }
+
+      .message-panel {
+        border-top: 2px solid #ccc;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="sort-bar">Sort by <input type="text" placeholder="Search..." /></div>
+      <div class="cards">
+        <!-- Sample cards -->
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul" />
+          <div>
+            <div class="basic-info">Rahul Singh</div>
+            <div class="details">
+              <div>💼 Frontend Developer</div>
+              <div>🛠 React, Tailwind, JS</div>
+              <div>📍 Delhi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya" />
+          <div>
+            <div class="basic-info">Priya Mehta</div>
+            <div class="details">
+              <div>💼 Backend Developer</div>
+              <div>🛠 Node.js, Express, MongoDB</div>
+              <div>📍 Mumbai</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/men/64.jpg" alt="Arjun" />
+          <div>
+            <div class="basic-info">Arjun Das</div>
+            <div class="details">
+              <div>💼 Fullstack Engineer</div>
+              <div>🛠 MERN, Docker, AWS</div>
+              <div>📍 Bengaluru</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/30.jpg" alt="Anita" />
+          <div>
+            <div class="basic-info">Anita Roy</div>
+            <div class="details">
+              <div>💼 UI/UX Designer</div>
+              <div>🛠 Figma, Adobe XD</div>
+              <div>📍 Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/30.jpg" alt="Anita" />
+          <div>
+            <div class="basic-info">Anita Roy</div>
+            <div class="details">
+              <div>💼 UI/UX Designer</div>
+              <div>🛠 Figma, Adobe XD</div>
+              <div>📍 Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/30.jpg" alt="Anita" />
+          <div>
+            <div class="basic-info">Anita Roy</div>
+            <div class="details">
+              <div>💼 UI/UX Designer</div>
+              <div>🛠 Figma, Adobe XD</div>
+              <div>📍 Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/30.jpg" alt="Anita" />
+          <div>
+            <div class="basic-info">Anita Roy</div>
+            <div class="details">
+              <div>💼 UI/UX Designer</div>
+              <div>🛠 Figma, Adobe XD</div>
+              <div>📍 Hyderabad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message panel -->
+    <div class="message-panel">
+      <div>
+        <div class="message-header">Messages</div>
+        <div class="messages" id="messages"></div>
+      </div>
+      <div class="input-box">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("messageInput");
+    const messagesDiv = document.getElementById("messages");
+    let isLeft = true;
+
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        const msg = document.createElement("div");
+        msg.className = "msg " + (isLeft ? "left" : "right");
+        msg.innerText = input.value.trim();
+        messagesDiv.appendChild(msg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        input.value = "";
+        isLeft = !isLeft;
+      }
+    });
+  </script>
+</body>
+</html>

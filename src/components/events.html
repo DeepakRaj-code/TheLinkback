@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional Events | Alumni Connect</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #e2e8f0);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #0f172a;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .events-section {
+      flex: 1;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    .event-card {
+      background-color: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 360px;
+    }
+
+    /* Only on hover, expand this card */
+    .event-card:hover {
+      transform: scale(1.05);
+      min-height: 500px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .event-details {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .event-details h3 {
+      font-size: 1.5em;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+      color: #475569;
+      font-size: 1em;
+      line-height: 1.6;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+    }
+
+    /* Only on hover, show description for the hovered card */
+    .event-card:hover .description {
+      opacity: 1;
+      visibility: visible;
+      max-height: 500px;
+      margin-bottom: 10px;
+    }
+
+    .event-details .date {
+      margin-top: auto;
+      font-weight: 600;
+      color: #2563eb;
+      font-size: 1em;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95em;
+      margin-top: auto;
+    }
+
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .events-section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎓 Alumni Connect — Professional Events</h1>
+    <p>Explore our upcoming events, conferences, and workshops designed to empower, network, and grow together!</p>
+  </header>
+
+  <section class="events-section">
+    <div class="events-container">
+
+      <!-- Card 1 -->
+      <div class="event-card">
+        <img src="https://images.pexels.com/photos/1181317/pexels-photo-1181317.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600" alt="AI Summit" class="event-image">
+        <div class="event-details">
+          <h3>TechNext 2025: AI & Innovation Summit</h3>
+          <div class="description">
+            Discover how AI is transforming industries. This summit brings alumni and leaders together for keynotes, demos, and networking in the future of technology.
+          </div>
+          <div class="date">📍 Hyderabad • 📅 June 20, 2025</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="event-card">
+        <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600" alt="Networking Night" class="event-image">
+        <div class="event-details">
+          <h3>Alumni Networking Night</h3>
+          <div class="description">
+            Meet successful alumni, share your goals, and build lasting professional relationships over drinks and discussions in a relaxed setting.
+          </div>
+          <div class="date">📍 Pune • 📅 July 8, 2025</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="event-card">
+        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600" alt="Startup Bootcamp" class="event-image">
+        <div class="event-details">
+          <h3>Startup Bootcamp: Build & Pitch</h3>
+          <div class="description">
+            3 days of intense ideation, validation, and pitching. Work with mentors, build your prototype, and pitch your startup idea to top investors.
+          </div>
+          <div class="date">📍 Bengaluru • 📅 August 2–4, 2025</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="event-card">
+        <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600" alt="Alumni Reunion" class="event-image">
+        <div class="event-details">
+          <h3>Global Tech Alumni Reunion</h3>
+          <div class="description">
+            Reconnect with global alumni in a 2-day celebration featuring nostalgic talks, tech showcases, and fun cultural programs.
+          </div>
+          <div class="date">📍 New Delhi • 📅 September 15–16, 2025</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="event-card">
+        <img src="https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600" alt="UX Workshop" class="event-image">
+        <div class="event-details">
+          <h3>Product Design & UX Bootcamp</h3>
+          <div class="description">
+            Learn the art of designing intuitive digital products from alumni UX experts. Includes hands-on Figma labs, case studies, and feedback sessions.
+          </div>
+          <div class="date">📍 Mumbai • 📅 October 10–11, 2025</div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="event-card">
+        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600" alt="Career Webinar" class="event-image">
+        <div class="event-details">
+          <h3>Career Advancement Webinar Series</h3>
+          <div class="description">
+            Join our weekly webinars led by top alumni covering career growth tips, resume building, and transitioning across tech domains.
+          </div>
+          <div class="date">📍 Online • 📅 Every Friday (Oct–Dec)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Alumni Connect. All rights reserved.
+  </footer>
+
+</body>
+</html>
